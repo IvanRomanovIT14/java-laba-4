@@ -268,43 +268,43 @@
 ### Функциональные интерфейсы:
 
 **1. Function<T, R>**
-```java
+java
 @FunctionalInterface
 public interface Function<T, P> {
     P apply(T item);
 }
-```
+
 
 **2. Predicate<T>**
-```java
+java
 @FunctionalInterface
 public interface Predicate<T> {
     boolean test(T value);
 }
-```
+
 
 **3. Reduce<T>**
-```java
+java
 @FunctionalInterface
 public interface Reduce<T> {
     T reduce(T accumulator, T current);
 }
-```
+
 
 **4. Collector<P, T>**
-```java
+java
 public interface Collector<P, T> {
     P createCollection();
 }
-```
+
 
 **5. Accumulator<P, T>**
-```java
+java
 @FunctionalInterface
 public interface Accumulator<P, T> {
     void accumulate(P collection, T value);
 }
-```
+
 
 ---
 
