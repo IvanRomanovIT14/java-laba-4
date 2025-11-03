@@ -1,9 +1,8 @@
 public class Valid {
-    public boolean isNumber(String str) {
+    public boolean isNumber(String str) { //Метод проверяет что строка состоит только из цифр
         if (str == null || str.isEmpty()) {
             return false;
         }
-
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
             if (c < '0' || c > '9') {
@@ -13,7 +12,7 @@ public class Valid {
         return true;
     }
 
-    //Метод для проверки целых чисел
+    //Метод для проверки что строка это целое число
     public boolean isValidInteger(String str) {
         if (str == null || str.isEmpty()) {
             return false;
@@ -40,12 +39,11 @@ public class Valid {
         }
     }
 
-    //Метод для проверки положительных целых чисел
+    //Метод проверяет что строка положительное целое число
     public boolean isValidPositiveInteger(String str) {
         if (str == null || str.isEmpty()) {
             return false;
         }
-
         //Проверяем, что все символы - цифры и число положительное
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -53,7 +51,6 @@ public class Valid {
                 return false;
             }
         }
-
         //Проверяем, что число не равно 0
         return !str.equals("0");
     }
