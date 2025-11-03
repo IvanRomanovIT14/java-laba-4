@@ -1,7 +1,7 @@
 public class Box<T> {
     private T item;
 
-    public Box() {
+    public Box() { //Конструктор создает пустую коробку
         this.item = null;
     }
 
@@ -12,13 +12,13 @@ public class Box<T> {
         this.item = item;
     }
 
-    public T extract() {
+    public T extract() { //Метод извлекает объект из коробки
         T el = this.item;
         this.item = null;
         return el;
     }
 
-    public boolean full() {
+    public boolean full() { //Метод проверяет полная ли коробка
         return this.item == null;
     }
 
