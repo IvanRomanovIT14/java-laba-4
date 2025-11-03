@@ -18,6 +18,18 @@ public class Main {
                     Integer something = integerBox.extract();
                     System.out.println("Достали: " + something);
                     System.out.println("Коробка после доставания: " + integerBox);
+                    System.out.println("Введите число для хранения в коробке: ");
+                    Box<Integer> integerBox1 = new Box<>();
+                    String Box1 = scanner.nextLine();
+                    if (valid.isNumber(Box1)) {
+                        int n1 = Integer.parseInt(Box1);
+                        integerBox1.put(n1);
+                        System.out.println("Коробка пуста: " + integerBox1.full());
+                        int a = integerBox1.extract();
+                        System.out.println("Достали: " + a);
+                    } else {
+                        System.out.println("Вводить можно только число!");
+                    }
                     break;
                 case 2:
                     Storage<Integer> storage1 = new Storage<>(null, 0);
@@ -97,7 +109,8 @@ public class Main {
                                 System.out.print("Введите строку " + (i + 1) + ": ");
                                 inputStrings.add(scanner.nextLine());
                             }
-                            List<Integer> resultLengths = Transform.transform(inputStrings, value -> value.length());
+                            List<Integer> resultLengths = Transform.transform(inputStrings,
+                                    value -> value.length());
                             System.out.println("Исходные строки: " + inputStrings);
                             System.out.println("Длины строк: " + resultLengths);
                             break;
@@ -121,7 +134,8 @@ public class Main {
                                 }
                                 inputNumbers.add(Integer.parseInt(numStr));
                             }
-                            List<Integer> resultAbsolutes = Transform.transform(inputNumbers, value -> Math.abs(value));
+                            List<Integer> resultAbsolutes = Transform.transform(inputNumbers,
+                                    value -> Math.abs(value));
                             System.out.println("Исходные числа: " + inputNumbers);
                             System.out.println("Абсолютные значения: " + resultAbsolutes);
                             break;
@@ -139,18 +153,21 @@ public class Main {
                                 System.out.print("Сколько чисел в массиве " + (i + 1) + "? ");
                                 String sizeStr = scanner.nextLine();
                                 while (!valid.isValidPositiveInteger(sizeStr)) {
-                                    System.out.println("Ошибка: введите положительное целое число!");
+                                    System.out.println("Ошибка: введите положительное" +
+                                            " целое число!");
                                     System.out.print("Сколько чисел в массиве " + (i + 1) + "? ");
                                     sizeStr = scanner.nextLine();
                                 }
                                 int size = Integer.parseInt(sizeStr);
                                 int[] array = new int[size];
                                 for (int j = 0; j < size; j++) {
-                                    System.out.print("Введите число " + (j + 1) + " массива " + (i + 1) + ": ");
+                                    System.out.print("Введите число " + (j + 1) + " массива "
+                                            + (i + 1) + ": ");
                                     String numStr = scanner.nextLine();
                                     while (!valid.isValidInteger(numStr)) {
                                         System.out.println("Ошибка: введите целое число!");
-                                        System.out.print("Введите число " + (j + 1) + " массива " + (i + 1) + ": ");
+                                        System.out.print("Введите число " + (j + 1) + " массива "
+                                                + (i + 1) + ": ");
                                         numStr = scanner.nextLine();
                                     }
                                     array[j] = Integer.parseInt(numStr);
@@ -169,7 +186,8 @@ public class Main {
                                 }
                                 return max;
                             });
-                            System.out.println("Исходные массивы: " + Arrays.deepToString(inputArrays.toArray()));
+                            System.out.println("Исходные массивы: " +
+                                    Arrays.deepToString(inputArrays.toArray()));
                             System.out.println("Максимальные значения: " + resultMax);
                             break;
                         default:
@@ -232,7 +250,8 @@ public class Main {
                                 minLengthStr = scanner.nextLine();
                             }
                             int minLength = Integer.parseInt(minLengthStr);
-                            List<String> filtered = Filter.filter(inputStrings, value -> value.length() >= minLength);
+                            List<String> filtered = Filter.filter(inputStrings,
+                                    value -> value.length() >= minLength);
                             System.out.println("Исходные строки: " + inputStrings);
                             System.out.println("Отфильтрованные строки: " + filtered);
                             break;
@@ -256,7 +275,8 @@ public class Main {
                                 }
                                 inputNumbers.add(Integer.parseInt(numStr));
                             }
-                            List<Integer> positives = Filter.filter(inputNumbers, value -> value > 0);
+                            List<Integer> positives = Filter.filter(inputNumbers,
+                                    value -> value > 0);
                             System.out.println("Исходные числа: " + inputNumbers);
                             System.out.println("Положительные числа: " + positives);
                             break;
@@ -313,7 +333,7 @@ public class Main {
                     }
                     break;
                 case 6:
-                    System.out.println("1. Конкатенация строк:");
+                    System.out.println("1. Объединение строк:");
                     List<String> strings3 = List.of("qwerty", "asdfg", "zx");
                     String concatenated = Reducer.reduce(strings3, (acc, cur) -> acc + cur, "");
                     System.out.println("   Исходные: " + strings3);
@@ -342,7 +362,7 @@ public class Main {
                     System.out.println("4. Тест с пустым списком:");
                     List<String> emptyList = List.of();
                     String emptyResult = Reducer.reduce(emptyList, (acc, cur) -> acc + cur,
-                            "default");
+                            ":)");
                     System.out.println("   Пустой список: " + emptyList);
                     System.out.println("   Результат: " + emptyResult);
                     System.out.println("Выберите операцию:");
@@ -366,7 +386,8 @@ public class Main {
                                 System.out.print("Введите строку " + (i + 1) + ": ");
                                 inputStrings.add(scanner.nextLine());
                             }
-                            String result = Reducer.reduce(inputStrings, (acc, cur) -> acc + cur, "");
+                            String result = Reducer.reduce(inputStrings, (acc, cur)
+                                    -> acc + cur, "");
                             System.out.println("Исходные строки: " + inputStrings);
                             System.out.println("Результат конкатенации: " + result);
                             break;
@@ -390,7 +411,8 @@ public class Main {
                                 }
                                 inputNumbers.add(Integer.parseInt(numStr));
                             }
-                            Integer resultSum = Reducer.reduce(inputNumbers, (acc, cur) -> acc + cur, 0);
+                            Integer resultSum = Reducer.reduce(inputNumbers, (acc, cur)
+                                    -> acc + cur, 0);
                             System.out.println("Исходные числа: " + inputNumbers);
                             System.out.println("Сумма чисел: " + resultSum);
                             break;
@@ -408,18 +430,21 @@ public class Main {
                                 System.out.print("Сколько чисел в списке " + (i + 1) + "? ");
                                 String sizeStr = scanner.nextLine();
                                 while (!valid.isValidPositiveInteger(sizeStr)) {
-                                    System.out.println("Ошибка: введите положительное целое число!");
+                                    System.out.println("Ошибка: введите положительное целое" +
+                                            " число!");
                                     System.out.print("Сколько чисел в списке " + (i + 1) + "? ");
                                     sizeStr = scanner.nextLine();
                                 }
                                 int size = Integer.parseInt(sizeStr);
                                 List<Integer> list = new ArrayList<>();
                                 for (int j = 0; j < size; j++) {
-                                    System.out.print("Введите число " + (j + 1) + " списка " + (i + 1) + ": ");
+                                    System.out.print("Введите число " + (j + 1) + " списка " +
+                                            (i + 1) + ": ");
                                     String numStr = scanner.nextLine();
                                     while (!valid.isValidInteger(numStr)) {
                                         System.out.println("Ошибка: введите целое число!");
-                                        System.out.print("Введите число " + (j + 1) + " списка " + (i + 1) + ": ");
+                                        System.out.print("Введите число " + (j + 1) + " списка " +
+                                                (i + 1) + ": ");
                                         numStr = scanner.nextLine();
                                     }
                                     list.add(Integer.parseInt(numStr));
@@ -451,7 +476,8 @@ public class Main {
                         res.add(new ArrayList<>());
                         return res;
                     };
-                    Accumulator<List<List<Integer>>, Integer> numberAccumulator = (lists, value) -> {
+                    Accumulator<List<List<Integer>>, Integer> numberAccumulator = (lists, value)
+                            -> {
                         if (value > 0) {
                             lists.get(0).add(value);
                         } else if (value < 0) {
@@ -460,7 +486,8 @@ public class Main {
                             lists.get(2).add(value);
                         }
                     };
-                    List<List<Integer>> numberGroups = CollectionUtils.collect(numbers4, numberCollector, numberAccumulator);
+                    List<List<Integer>> numberGroups = CollectionUtils.collect(numbers4,
+                            numberCollector, numberAccumulator);
                     System.out.println("   Исходные числа: " + numbers4);
                     System.out.println("   Положительные: " + numberGroups.get(0));
                     System.out.println("   Отрицательные: " + numberGroups.get(1));
@@ -482,7 +509,8 @@ public class Main {
                         }
                         return res;
                     };
-                    Accumulator<List<List<String>>, String> lengthAccumulator = (lists, value) -> {
+                    Accumulator<List<List<String>>, String> lengthAccumulator = (lists,
+                                                                                 value) -> {
                         int len = value.length();
                         int idx = -1;
                         for (int i = 0; i < lists.size(); i++) {
@@ -502,13 +530,15 @@ public class Main {
                             lists.get(idx).add(value);
                         }
                     };
-                    List<List<String>> lengthGroups = CollectionUtils.collect(strings4, lengthCollector, lengthAccumulator);
+                    List<List<String>> lengthGroups = CollectionUtils.collect(strings4,
+                            lengthCollector, lengthAccumulator);
                     System.out.println("   Исходные строки: " + strings4);
                     System.out.println("   Группировка по длине:");
                     for (int i = 0; i < lengthGroups.size(); i++) {
                         if (!lengthGroups.get(i).isEmpty()) {
                             int length = lengthGroups.get(i).get(0).length();
-                            System.out.println("     Длина " + length + ": " + lengthGroups.get(i));
+                            System.out.println("     Длина " + length + ": " + lengthGroups.
+                                    get(i));
                         }
                     }
                     System.out.println("3. Уникальные строки:");
@@ -519,7 +549,8 @@ public class Main {
                             list.add(value);
                         }
                     };
-                    List<String> uniqueStrings = CollectionUtils.collect(strings5, uniqueCollector, uniqueAccumulator);
+                    List<String> uniqueStrings = CollectionUtils.collect(strings5,
+                            uniqueCollector, uniqueAccumulator);
                     System.out.println("   Исходные строки: " + strings5);
                     System.out.println("   Уникальные строки: " + uniqueStrings);
                     System.out.println("Выберите тип группировки:");
@@ -565,7 +596,8 @@ public class Main {
                                     lists.get(2).add(value);
                                 }
                             };
-                            List<List<Integer>> res1 = CollectionUtils.collect(inputNumbers, col1, acc1);
+                            List<List<Integer>> res1 = CollectionUtils.collect(inputNumbers, col1,
+                                    acc1);
                             System.out.println("Исходные числа: " + inputNumbers);
                             System.out.println("Положительные числа: " + res1.get(0));
                             System.out.println("Отрицательные числа: " + res1.get(1));
@@ -608,11 +640,13 @@ public class Main {
                                     lists.get(idx).add(value);
                                 }
                             };
-                            List<List<String>> res2 = CollectionUtils.collect(inputStrings, col2, acc2);
+                            List<List<String>> res2 = CollectionUtils.collect(inputStrings, col2,
+                                    acc2);
                             System.out.println("Исходные строки: " + inputStrings);
                             System.out.println("Группировка по длине:");
                             for (int i = 0; i < res2.size(); i++) {
-                                System.out.println("  Длина " + lenList.get(i) + ": " + res2.get(i));
+                                System.out.println("  Длина " + lenList.get(i) + ": " +
+                                        res2.get(i));
                             }
                             break;
                         case "3":
