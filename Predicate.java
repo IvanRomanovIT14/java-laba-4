@@ -1,4 +1,4 @@
 @FunctionalInterface
-public interface Predicate <T> {
+public interface Predicate<T> {
     boolean test(T value);
 }
