@@ -1,3 +1,3 @@
 public interface Collector<P, T> {
-    P createCollection();
+    P createCollection(); //Метод для создания новой пустой коллекции
 }
